@@ -8,7 +8,7 @@ export default function Progress({ index, numQuestion, points, maxPossiblePoints
       <p>
         Question <strong>{index}</strong>/{numQuestion}
       </p>
-      <p><strong>{points}</strong>/ {maxPossiblePoints}</p>
+      <p><strong>{points}</strong>/ {maxPossiblePoints}</p>3
     </header>
   );
 }

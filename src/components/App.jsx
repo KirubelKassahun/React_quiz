@@ -40,7 +40,11 @@ function reducer(state, action) {
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
     case "finish":
-      return { ...state, status:"finished" };
+      return { ...state, status: "finished" };
+    case "restart":
+      return { ...initialState, question: state.questions, status: "ready" };
+
+      
     default:
       throw new Error("action is Unknown");
   }
@@ -59,7 +63,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    fetch("http://localhost:9000/questions")
+    fetch("http://localhost:8000/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch(() => dispatch({ type: "dataFiled" }));
@@ -96,7 +100,7 @@ export default function App() {
           </>
         )}
         {status === "finished" && (
-          <FinishedQuiz points={points} maxPossiblePoints={maxPossiblePoints} />
+          <FinishedQuiz points={points} maxPossiblePoints={maxPossiblePoints} dispatch={dispatch}/>
         )}
       </Main>
     </div>
