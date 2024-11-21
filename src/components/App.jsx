@@ -67,6 +67,7 @@ export default function App() {
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch(() => dispatch({ type: "dataFiled" }));
+      
   }, []);
 
   return (
